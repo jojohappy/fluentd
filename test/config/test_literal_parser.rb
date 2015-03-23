@@ -228,6 +228,8 @@ module Fluent::Config
       test('"#{"}"}"') { assert_text_parsed_as("}", '"#{"}"}"') }
       test('"#{#}"') { assert_parse_error('"#{#}"') }  # error in embedded ruby code
       test("\"\#{\n=begin\n}\"") { assert_parse_error("\"\#{\n=begin\n}\"") }  # error in embedded ruby code
+      test('"#{v1}foo#{v2}"') { assert_text_parsed_as("#{v1}foo#{v2}", '"#{v1}foo#{v2}"') }
+      test('"#{v1}foo#{v2}bar"') { assert_text_parsed_as("#{v1}foo#{v2}bar", '"#{v1}foo#{v2}bar"') }
     end
 
     sub_test_case 'array parsing' do
